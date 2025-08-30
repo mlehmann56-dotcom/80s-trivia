@@ -35,6 +35,10 @@ const ResultsPage = ({ currentLevel }) => {
   };
 
   const handleGoHome = () => {
+    navigate("/categories");
+  };
+
+  const handleNextLevel = () => {
     navigate("/");
   };
 
