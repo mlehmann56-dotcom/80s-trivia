@@ -108,39 +108,109 @@ export const mockQuestions = {
   ],
   movies: [
     {
-      id: 6,
+      id: 16,
       question: "Who directed 'Back to the Future' (1985)?",
       options: ["Steven Spielberg", "Robert Zemeckis", "John Hughes", "George Lucas"],
       correctAnswer: 1,
       difficulty: "medium"
     },
     {
-      id: 7,
+      id: 17,
       question: "In 'The Breakfast Club', how many students are in detention?",
       options: ["4", "5", "6", "7"],
       correctAnswer: 1,
       difficulty: "easy"
     },
     {
-      id: 8,
+      id: 18,
       question: "Which 1982 film featured the line 'E.T. phone home'?",
       options: ["E.T. the Extra-Terrestrial", "Close Encounters", "Alien", "Blade Runner"],
       correctAnswer: 0,
       difficulty: "easy"
     },
     {
-      id: 9,
+      id: 19,
       question: "Who played the main character in 'Ferris Bueller's Day Off'?",
       options: ["Matthew Broderick", "Anthony Michael Hall", "Emilio Estevez", "Andrew McCarthy"],
       correctAnswer: 0,
       difficulty: "medium"
     },
     {
-      id: 10,
+      id: 20,
       question: "Which movie featured the song 'Eye of the Tiger'?",
       options: ["Rocky III", "Top Gun", "Flashdance", "Footloose"],
       correctAnswer: 0,
       difficulty: "medium"
+    },
+    {
+      id: 21,
+      question: "Who played the Terminator in the 1984 film?",
+      options: ["Sylvester Stallone", "Arnold Schwarzenegger", "Kurt Russell", "Bruce Willis"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 22,
+      question: "What was the highest-grossing film of 1982?",
+      options: ["E.T. the Extra-Terrestrial", "Tootsie", "Rocky III", "An Officer and a Gentleman"],
+      correctAnswer: 0,
+      difficulty: "hard"
+    },
+    {
+      id: 23,
+      question: "Which actor starred in 'Top Gun' (1986)?",
+      options: ["Tom Cruise", "Patrick Swayze", "Charlie Sheen", "Kevin Costner"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 24,
+      question: "Who directed 'The Shining' (1980)?",
+      options: ["John Carpenter", "Stanley Kubrick", "David Lynch", "George A. Romero"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 25,
+      question: "Which film features the quote 'Nobody puts Baby in a corner'?",
+      options: ["Flashdance", "Footloose", "Dirty Dancing", "Fame"],
+      correctAnswer: 2,
+      difficulty: "easy"
+    },
+    {
+      id: 26,
+      question: "What year was 'Blade Runner' released?",
+      options: ["1981", "1982", "1983", "1984"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 27,
+      question: "Who played Indiana Jones in 'Raiders of the Lost Ark'?",
+      options: ["Harrison Ford", "Tom Selleck", "Kurt Russell", "Michael Douglas"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 28,
+      question: "Which John Hughes film was released in 1985?",
+      options: ["Sixteen Candles", "The Breakfast Club", "Ferris Bueller's Day Off", "Pretty in Pink"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 29,
+      question: "What was the sequel to 'Alien' called?",
+      options: ["Alien II", "Aliens", "Alien: The Return", "Alien: Resurrection"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 30,
+      question: "Which 1984 film starred Bill Murray as a paranormal investigator?",
+      options: ["Stripes", "Ghostbusters", "Scrooged", "Little Shop of Horrors"],
+      correctAnswer: 1,
+      difficulty: "easy"
     }
   ],
   fashion: [
