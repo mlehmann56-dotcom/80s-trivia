@@ -150,6 +150,7 @@ class UserProgressService:
             {"$limit": limit},
             {
                 "$project": {
+                    "_id": 0,  # Exclude MongoDB ObjectId
                     "sessionId": 1,
                     "averageScore": 1,
                     "totalQuestionsAnswered": 1,
