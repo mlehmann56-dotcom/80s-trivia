@@ -164,8 +164,43 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">🎵</div>
+          <div className="text-white text-xl">Loading your 80s trivia...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">😅</div>
+          <div className="text-white text-xl mb-4">{error}</div>
+          <Button onClick={() => navigate("/categories")} className="bg-pink-600 hover:bg-pink-700">
+            Back to Categories
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   if (!currentQuestion) {
-    return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-4xl mb-4">🤔</div>
+          <div className="text-white text-xl">No questions available for this level/category.</div>
+          <Button onClick={() => navigate("/categories")} className="bg-pink-600 hover:bg-pink-700 mt-4">
+            Back to Categories
+          </Button>
+        </div>
+      </div>
+    );
   }
 
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
