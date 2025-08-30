@@ -6,7 +6,41 @@ import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
 import { Lock, Star, Trophy, CheckCircle } from "lucide-react";
 import { levelInfo } from "../data/mockQuestionsLevels";
-import { isLevelUnlocked, getOverallLevelProgress } from "../utils/levelProgressionUtils";
+  const getOverallLevelProgress = (level, userData) => {
+    if (!userData || !userData.levels) return { completed: 0, total: 4, percentage: 0 };
+    
+    const levelData = userData.levels[level.toString()];
+    if (!levelData) return { completed: 0, total: 4, percentage: 0 };
+    
+    const categories = ['music', 'movies', 'fashion', 'general'];
+    const completed = categories.filter(category => {
+      const categoryData = levelData[category];
+      return categoryData && categoryData.completed && categoryData.score >= 80;
+    }).length;
+    
+    return {
+      completed,
+      total: 4,
+      percentage: Math.round((completed / 4) * 100)
+    };
+  };
+
+  const isLevelUnlocked = (level, userData) => {
+    if (level === 1) return true;
+    if (!userData || !userData.levels) return false;
+    
+    const previousLevel = level - 1;
+    const previousLevelData = userData.levels[previousLevel.toString()];
+    
+    if (!previousLevelData) return false;
+    
+    // Check if all categories in previous level have been completed with 80%+ score
+    const categories = ['music', 'movies', 'fashion', 'general'];
+    return categories.every(category => {
+      const categoryData = previousLevelData[category];
+      return categoryData && categoryData.completed && categoryData.score >= 80;
+    });
+  };
 
 const LevelSelector = ({ userData, setCurrentLevel }) => {
   const navigate = useNavigate();
