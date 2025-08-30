@@ -22,20 +22,28 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    // Get questions for current level and category
-    if (mockQuestionsLevels[`level${currentLevel}`] && mockQuestionsLevels[`level${currentLevel}`][category]) {
-      setQuestions(mockQuestionsLevels[`level${currentLevel}`][category]);
-    } else {
-      // Fallback to level 1 if level doesn't exist yet
-      if (mockQuestionsLevels.level1[category]) {
-        setQuestions(mockQuestionsLevels.level1[category]);
-      } else {
-        navigate("/categories");
+    const loadQuestions = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const questionsData = await getQuestions(currentLevel, category);
+        setQuestions(questionsData.questions);
+        setLoading(false);
+      } catch (err) {
+        console.error('Failed to load questions:', err);
+        setError('Failed to load questions. Please try again.');
+        setLoading(false);
       }
-    }
-  }, [category, currentLevel, navigate]);
+    };
+
+    loadQuestions();
+  }, [category, currentLevel]);
 
   useEffect(() => {
     if (timeLeft > 0 && !showResult && !quizCompleted) {
