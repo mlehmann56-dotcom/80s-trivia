@@ -150,12 +150,16 @@ const ResultsPage = ({ currentLevel }) => {
 
         {/* Fun Fact */}
         <div className="mt-8 text-center bg-black/20 rounded-xl p-6 backdrop-blur-sm border border-gray-700">
-          <h3 className="text-xl font-bold text-white mb-2">80s Fun Fact!</h3>
+          <h3 className="text-xl font-bold text-white mb-2">Level {level} 80s Fun Fact!</h3>
           <p className="text-gray-300">
-            {category.toLowerCase() === "music" && "The 80s saw the birth of MTV with 'Video Killed the Radio Star' as the first music video!"}
-            {category.toLowerCase() === "movies" && "The 80s gave us some of the highest-grossing films of all time, including E.T. and the Star Wars sequels!"}
-            {category.toLowerCase() === "fashion" && "Shoulder pads were so popular in the 80s that they became a symbol of power dressing!"}
-            {category.toLowerCase() === "general" && "The 80s introduced us to personal computers, video games, and the beginning of the digital age!"}
+            {category.toLowerCase() === "music" && level === 1 && "The 80s saw the birth of MTV with 'Video Killed the Radio Star' as the first music video!"}
+            {category.toLowerCase() === "music" && level === 2 && "Many 80s bands used the Yamaha DX7 synthesizer, which defined the decade's sound!"}
+            {category.toLowerCase() === "movies" && level === 1 && "The 80s gave us some of the highest-grossing films of all time, including E.T. and the Star Wars sequels!"}
+            {category.toLowerCase() === "movies" && level === 2 && "Many 80s movies were shot on 35mm film, giving them their distinctive look!"}
+            {category.toLowerCase() === "fashion" && level === 1 && "Shoulder pads were so popular in the 80s that they became a symbol of power dressing!"}
+            {category.toLowerCase() === "fashion" && level === 2 && "80s fashion was heavily influenced by music videos and celebrity culture!"}
+            {category.toLowerCase() === "general" && level === 1 && "The 80s introduced us to personal computers, video games, and the beginning of the digital age!"}
+            {category.toLowerCase() === "general" && level === 2 && "The 80s saw the rise of global communication with satellite technology and early internet protocols!"}
             {!["music", "movies", "fashion", "general"].includes(category.toLowerCase()) && "The 1980s were known as the 'Decade of Excess' for their bold style and innovations!"}
           </p>
         </div>
