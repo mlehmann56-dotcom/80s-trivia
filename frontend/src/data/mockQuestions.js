@@ -34,6 +34,76 @@ export const mockQuestions = {
       options: ["1999", "Purple Rain", "Sign O' the Times", "Around the World in a Day"],
       correctAnswer: 1,
       difficulty: "medium"
+    },
+    {
+      id: 6,
+      question: "Who sang 'Girls Just Want to Have Fun'?",
+      options: ["Pat Benatar", "Cyndi Lauper", "Blondie", "Joan Jett"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 7,
+      question: "Which band released 'Don't Stop Believin'' in 1981?",
+      options: ["Journey", "Foreigner", "REO Speedwagon", "Styx"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 8,
+      question: "What was Michael Jackson's best-selling album of the 80s?",
+      options: ["Off the Wall", "Thriller", "Bad", "Dangerous"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 9,
+      question: "Which duo sang 'Wake Me Up Before You Go-Go'?",
+      options: ["Wham!", "Tears for Fears", "Hall & Oates", "Daryl Hall & John Oates"],
+      correctAnswer: 0,
+      difficulty: "medium"
+    },
+    {
+      id: 10,
+      question: "What instrument did Phil Collins play before becoming a lead singer?",
+      options: ["Guitar", "Keyboard", "Drums", "Bass"],
+      correctAnswer: 2,
+      difficulty: "medium"
+    },
+    {
+      id: 11,
+      question: "Which band performed 'Pour Some Sugar on Me'?",
+      options: ["Def Leppard", "Van Halen", "Whitesnake", "Poison"],
+      correctAnswer: 0,
+      difficulty: "medium"
+    },
+    {
+      id: 12,
+      question: "Who sang 'Everybody Wants to Rule the World'?",
+      options: ["Duran Duran", "Tears for Fears", "The Human League", "Spandau Ballet"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 13,
+      question: "Which artist released 'Like a Prayer' in 1989?",
+      options: ["Madonna", "Whitney Houston", "Janet Jackson", "Cyndi Lauper"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 14,
+      question: "What was Bon Jovi's biggest hit of the 80s?",
+      options: ["Runaway", "Livin' on a Prayer", "You Give Love a Bad Name", "Wanted Dead or Alive"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 15,
+      question: "Which band sang 'Come on Eileen'?",
+      options: ["Dexys Midnight Runners", "The Specials", "Madness", "The Beat"],
+      correctAnswer: 0,
+      difficulty: "hard"
     }
   ],
   movies: [
