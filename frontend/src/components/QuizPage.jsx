@@ -3,11 +3,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Progress } from "./ui/progress";
-import { mockQuestions } from "../data/mockQuestions";
+import { Badge } from "./ui/badge";
+import { mockQuestionsLevels, levelInfo } from "../data/mockQuestionsLevels";
 import { CheckCircle, XCircle, ArrowLeft, Clock } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
+import { updateCategoryProgress } from "../utils/levelProgressionUtils";
 
-const QuizPage = () => {
+const QuizPage = ({ currentLevel, userData, setUserData }) => {
   const { category } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -21,12 +23,18 @@ const QuizPage = () => {
   const [quizCompleted, setQuizCompleted] = useState(false);
 
   useEffect(() => {
-    if (mockQuestions[category]) {
-      setQuestions(mockQuestions[category]);
+    // Get questions for current level and category
+    if (mockQuestionsLevels[`level${currentLevel}`] && mockQuestionsLevels[`level${currentLevel}`][category]) {
+      setQuestions(mockQuestionsLevels[`level${currentLevel}`][category]);
     } else {
-      navigate("/");
+      // Fallback to level 1 if level doesn't exist yet
+      if (mockQuestionsLevels.level1[category]) {
+        setQuestions(mockQuestionsLevels.level1[category]);
+      } else {
+        navigate("/categories");
+      }
     }
-  }, [category, navigate]);
+  }, [category, currentLevel, navigate]);
 
   useEffect(() => {
     if (timeLeft > 0 && !showResult && !quizCompleted) {
@@ -49,7 +57,7 @@ const QuizPage = () => {
       setScore(score + 1);
       toast({
         title: "Correct! 🎉",
-        description: "Totally rad answer!",
+        description: getDifficultyMessage(currentQuestion.difficulty, true),
       });
     } else {
       toast({
@@ -60,6 +68,16 @@ const QuizPage = () => {
     }
   };
 
+  const getDifficultyMessage = (difficulty, correct) => {
+    const messages = {
+      easy: correct ? "Nice work on this classic 80s knowledge!" : "Keep studying those 80s classics!",
+      medium: correct ? "Great job on this intermediate question!" : "This one required deeper 80s knowledge!",
+      hard: correct ? "Impressive! That was a challenging question!" : "That was a tough one - even for 80s experts!",
+      expert: correct ? "Absolutely brilliant! Expert-level mastery!" : "Ultra-difficult question - only true 80s scholars know this!"
+    };
+    return messages[difficulty] || messages.medium;
+  };
+
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -68,18 +86,25 @@ const QuizPage = () => {
       setTimeLeft(30);
     } else {
       setQuizCompleted(true);
+      
+      // Update user progress
+      const updatedUserData = updateCategoryProgress(userData, currentLevel, category, score, questions.length);
+      setUserData(updatedUserData);
+      
       navigate("/results", { 
         state: { 
           score, 
           totalQuestions: questions.length, 
-          category: category.charAt(0).toUpperCase() + category.slice(1) 
+          category: category.charAt(0).toUpperCase() + category.slice(1),
+          level: currentLevel,
+          levelName: levelInfo[currentLevel].name
         } 
       });
     }
   };
 
   const handleGoBack = () => {
-    navigate("/");
+    navigate("/categories");
   };
 
   const getCategoryColor = () => {
@@ -89,6 +114,16 @@ const QuizPage = () => {
       case "fashion": return "from-yellow-500 to-orange-600";
       case "general": return "from-green-500 to-teal-600";
       default: return "from-pink-500 to-purple-600";
+    }
+  };
+
+  const getDifficultyColor = (difficulty) => {
+    switch (difficulty) {
+      case "easy": return "bg-green-600";
+      case "medium": return "bg-yellow-600";
+      case "hard": return "bg-orange-600";
+      case "expert": return "bg-red-600";
+      default: return "bg-gray-600";
     }
   };
 
@@ -113,6 +148,12 @@ const QuizPage = () => {
           </Button>
           
           <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Badge variant="default">Level {currentLevel}</Badge>
+              <Badge variant="secondary" className={getDifficultyColor(currentQuestion.difficulty)}>
+                {currentQuestion.difficulty.charAt(0).toUpperCase() + currentQuestion.difficulty.slice(1)}
+              </Badge>
+            </div>
             <h1 className={`text-3xl font-bold bg-gradient-to-r ${getCategoryColor()} bg-clip-text text-transparent`}>
               {category.charAt(0).toUpperCase() + category.slice(1)} Quiz
             </h1>
@@ -196,6 +237,9 @@ const QuizPage = () => {
         <div className="fixed bottom-6 right-6 bg-black/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700">
           <p className="text-white font-semibold">
             Score: {score}/{questions.length}
+          </p>
+          <p className="text-gray-300 text-sm">
+            Level {currentLevel} - {levelInfo[currentLevel].name}
           </p>
         </div>
       </div>
