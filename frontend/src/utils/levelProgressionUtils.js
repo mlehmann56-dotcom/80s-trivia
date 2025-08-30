@@ -1,3 +1,5 @@
+import { getUserProgress, updateUserProgress, getSessionId } from '../services/apiService';
+
 // Level progression utility functions
 export const calculateScore = (correctAnswers, totalQuestions) => {
   return Math.round((correctAnswers / totalQuestions) * 100);
@@ -7,7 +9,7 @@ export const isLevelUnlocked = (level, userData) => {
   if (level === 1) return true;
   
   const previousLevel = level - 1;
-  const previousLevelData = userData.levels[previousLevel];
+  const previousLevelData = userData.levels[previousLevel.toString()];
   
   if (!previousLevelData) return false;
   
@@ -20,7 +22,7 @@ export const isLevelUnlocked = (level, userData) => {
 };
 
 export const getOverallLevelProgress = (level, userData) => {
-  const levelData = userData.levels[level];
+  const levelData = userData.levels[level.toString()];
   if (!levelData) return { completed: 0, total: 4, percentage: 0 };
   
   const categories = ['music', 'movies', 'fashion', 'general'];
@@ -50,33 +52,55 @@ export const getNextUnlockedLevel = (userData) => {
   return 10; // All levels completed
 };
 
-export const initializeUserData = () => {
-  const savedData = localStorage.getItem('80s-trivia-progress');
-  if (savedData) {
-    return JSON.parse(savedData);
+export const initializeUserData = async () => {
+  try {
+    const sessionId = getSessionId();
+    const userData = await getUserProgress(sessionId);
+    return userData;
+  } catch (error) {
+    console.error('Error initializing user data:', error);
+    // Return default structure if API fails
+    return {
+      sessionId: getSessionId(),
+      levels: {},
+      currentLevel: 1,
+      totalQuestionsAnswered: 0,
+      totalCorrectAnswers: 0,
+      averageScore: 0.0
+    };
   }
-  
-  return {
-    currentLevel: 1,
-    levels: {}
-  };
 };
 
-export const saveUserProgress = (userData) => {
-  localStorage.setItem('80s-trivia-progress', JSON.stringify(userData));
+export const saveUserProgress = async (progressData) => {
+  try {
+    const sessionId = getSessionId();
+    const updatedProgress = await updateUserProgress({
+      sessionId,
+      ...progressData
+    });
+    return updatedProgress;
+  } catch (error) {
+    console.error('Error saving user progress:', error);
+    throw error;
+  }
 };
 
-export const updateCategoryProgress = (userData, level, category, score, totalQuestions) => {
-  if (!userData.levels[level]) {
-    userData.levels[level] = {};
+export const updateCategoryProgress = async (userData, level, category, score, totalQuestions, answers) => {
+  try {
+    const sessionId = getSessionId();
+    const progressData = {
+      sessionId,
+      level,
+      category,
+      score: calculateScore(score, totalQuestions),
+      totalQuestions,
+      answers: answers || []
+    };
+    
+    const updatedProgress = await updateUserProgress(progressData);
+    return updatedProgress;
+  } catch (error) {
+    console.error('Error updating category progress:', error);
+    throw error;
   }
-  
-  userData.levels[level][category] = {
-    score: calculateScore(score, totalQuestions),
-    completed: true,
-    completedAt: new Date().toISOString()
-  };
-  
-  saveUserProgress(userData);
-  return userData;
 };
