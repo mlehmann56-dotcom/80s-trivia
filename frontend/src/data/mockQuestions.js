@@ -322,39 +322,109 @@ export const mockQuestions = {
   ],
   general: [
     {
-      id: 16,
+      id: 46,
       question: "Which gaming console was released by Nintendo in 1985?",
       options: ["Game Boy", "NES", "Super Nintendo", "Nintendo 64"],
       correctAnswer: 1,
       difficulty: "medium"
     },
     {
-      id: 17,
+      id: 47,
       question: "What was the most popular dance of the 80s?",
       options: ["The Robot", "Moonwalk", "Electric Slide", "All of the above"],
       correctAnswer: 3,
       difficulty: "medium"
     },
     {
-      id: 18,
+      id: 48,
       question: "Which president served most of the 1980s?",
       options: ["Jimmy Carter", "Ronald Reagan", "George H.W. Bush", "Gerald Ford"],
       correctAnswer: 1,
       difficulty: "easy"
     },
     {
-      id: 19,
+      id: 49,
       question: "MTV launched in what year?",
       options: ["1980", "1981", "1982", "1983"],
       correctAnswer: 1,
       difficulty: "medium"
     },
     {
-      id: 20,
+      id: 50,
       question: "Which event happened in 1989?",
       options: ["Chernobyl disaster", "Berlin Wall fell", "Live Aid concert", "Challenger explosion"],
       correctAnswer: 1,
       difficulty: "medium"
+    },
+    {
+      id: 51,
+      question: "What was the first music video played on MTV?",
+      options: ["Video Killed the Radio Star", "Money for Nothing", "Girls Just Want to Have Fun", "Take On Me"],
+      correctAnswer: 0,
+      difficulty: "hard"
+    },
+    {
+      id: 52,
+      question: "Which home computer was popular in the early 80s?",
+      options: ["Apple II", "Commodore 64", "IBM PC", "All of the above"],
+      correctAnswer: 3,
+      difficulty: "medium"
+    },
+    {
+      id: 53,
+      question: "What was the name of the U.S. space program in the 80s?",
+      options: ["Apollo", "Mercury", "Space Shuttle", "Gemini"],
+      correctAnswer: 2,
+      difficulty: "medium"
+    },
+    {
+      id: 54,
+      question: "Which arcade game was released in 1980?",
+      options: ["Pac-Man", "Donkey Kong", "Frogger", "Centipede"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 55,
+      question: "What major nuclear accident occurred in 1986?",
+      options: ["Three Mile Island", "Fukushima", "Chernobyl", "Windscale"],
+      correctAnswer: 2,
+      difficulty: "medium"
+    },
+    {
+      id: 56,
+      question: "Which toy became extremely popular in the mid-80s?",
+      options: ["Cabbage Patch Kids", "Transformers", "My Little Pony", "All of the above"],
+      correctAnswer: 3,
+      difficulty: "medium"
+    },
+    {
+      id: 57,
+      question: "What was the official end date of the Cold War?",
+      options: ["1987", "1989", "1991", "1990"],
+      correctAnswer: 2,
+      difficulty: "hard"
+    },
+    {
+      id: 58,
+      question: "Which technology was introduced to consumers in the 80s?",
+      options: ["VHS", "CD players", "Personal computers", "All of the above"],
+      correctAnswer: 3,
+      difficulty: "easy"
+    },
+    {
+      id: 59,
+      question: "What was the popular TV show 'Dallas' famous for?",
+      options: ["A cooking show", "A soap opera", "A game show", "A news program"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 60,
+      question: "Which fast food chain introduced the Happy Meal in 1979?",
+      options: ["Burger King", "McDonald's", "Wendy's", "KFC"],
+      correctAnswer: 1,
+      difficulty: "easy"
     }
   ]
 };
