@@ -62,7 +62,19 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
     setSelectedAnswer(answerIndex);
     setShowResult(true);
     
-    if (answerIndex === currentQuestion.correctAnswer) {
+    const isCorrect = answerIndex === currentQuestion.correctAnswer;
+    
+    // Record the answer
+    const answerRecord = {
+      questionId: currentQuestion.id,
+      selectedAnswer: answerIndex,
+      correct: isCorrect,
+      timeSpent: 30 - timeLeft
+    };
+    
+    setAnswers(prev => [...prev, answerRecord]);
+    
+    if (isCorrect) {
       setScore(score + 1);
       toast({
         title: "Correct! 🎉",
