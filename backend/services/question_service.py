@@ -1,5 +1,5 @@
 from motor.motor_asyncio import AsyncIOMotorDatabase
-from models.question import Question, QuestionCreate
+from models.question import Question, QuestionCreate, QuestionMetadata
 from typing import List, Optional
 import random
 
