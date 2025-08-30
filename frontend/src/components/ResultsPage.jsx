@@ -2,7 +2,8 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Trophy, Star, RefreshCw, Home, Award } from "lucide-react";
+import { Badge } from "./ui/badge";
+import { Trophy, Star, RefreshCw, Home, Award, ArrowRight, Lock } from "lucide-react";
 
 const ResultsPage = () => {
   const location = useLocation();
