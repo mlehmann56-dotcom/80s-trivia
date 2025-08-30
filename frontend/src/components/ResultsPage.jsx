@@ -136,6 +136,14 @@ const ResultsPage = ({ currentLevel }) => {
                 <Home className="w-5 h-5 mr-2" />
                 Choose Category
               </Button>
+              <Button
+                onClick={handleNextLevel}
+                variant="outline"
+                className="flex-1 bg-black/30 border-gray-600 text-white hover:bg-black/50 py-3 text-lg"
+              >
+                <ArrowRight className="w-5 h-5 mr-2" />
+                Level Select
+              </Button>
             </div>
           </CardContent>
         </Card>
