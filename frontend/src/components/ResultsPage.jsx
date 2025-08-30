@@ -5,12 +5,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Trophy, Star, RefreshCw, Home, Award, ArrowRight, Lock } from "lucide-react";
 
-const ResultsPage = () => {
+const ResultsPage = ({ currentLevel }) => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const { score = 0, totalQuestions = 0, category = "Quiz" } = location.state || {};
+  const { 
+    score = 0, 
+    totalQuestions = 0, 
+    category = "Quiz",
+    level = 1,
+    levelName = "Rad Rookie"
+  } = location.state || {};
+  
   const percentage = Math.round((score / totalQuestions) * 100);
+  const passedLevel = percentage >= 80;
 
   const getPerformanceLevel = () => {
     if (percentage >= 90) return { level: "Totally Awesome!", color: "from-yellow-400 to-orange-500", icon: <Trophy className="w-12 h-12" /> };
