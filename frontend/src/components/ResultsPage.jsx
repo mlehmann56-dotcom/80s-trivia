@@ -58,6 +58,10 @@ const ResultsPage = ({ currentLevel }) => {
         {/* Results Card */}
         <Card className="bg-black/30 border-gray-700 backdrop-blur-sm text-center">
           <CardHeader className="pb-4">
+            <div className="flex justify-center gap-2 mb-4">
+              <Badge variant="default">Level {level}</Badge>
+              <Badge variant="secondary">{levelName}</Badge>
+            </div>
             <div className={`w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r ${performance.color} flex items-center justify-center text-white shadow-xl`}>
               {performance.icon}
             </div>
