@@ -89,13 +89,34 @@ const ResultsPage = ({ currentLevel }) => {
 
             {/* Performance Message */}
             <div className="bg-black/20 rounded-lg p-6 border border-gray-700">
-              <p className="text-gray-300 text-lg">
+              <p className="text-gray-300 text-lg mb-4">
                 {percentage >= 90 && "You're a true 80s expert! Totally tubular performance!"}
                 {percentage >= 80 && percentage < 90 && "Excellent knowledge of the 80s! You really know your stuff!"}
                 {percentage >= 70 && percentage < 80 && "Good job! You've got solid 80s knowledge!"}
                 {percentage >= 60 && percentage < 70 && "Not bad! Keep exploring the awesome 80s!"}
                 {percentage < 60 && "The 80s were an amazing decade - keep learning about this radical era!"}
               </p>
+              
+              {/* Level Progression Message */}
+              {passedLevel ? (
+                <div className="bg-green-900/50 border border-green-700 rounded-lg p-4">
+                  <p className="text-green-300 font-semibold">
+                    🎉 Congratulations! You passed this category with {percentage}%!
+                  </p>
+                  <p className="text-green-400 text-sm mt-1">
+                    Complete all 4 categories with 80%+ to unlock the next level!
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-yellow-900/50 border border-yellow-700 rounded-lg p-4">
+                  <p className="text-yellow-300 font-semibold">
+                    You need 80% or higher to pass this level.
+                  </p>
+                  <p className="text-yellow-400 text-sm mt-1">
+                    Try again to unlock the next level!
+                  </p>
+                </div>
+              )}
             </div>
 
             {/* Action Buttons */}
