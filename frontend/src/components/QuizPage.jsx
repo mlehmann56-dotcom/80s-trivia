@@ -99,7 +99,7 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
     return messages[difficulty] || messages.medium;
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
@@ -108,9 +108,25 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
     } else {
       setQuizCompleted(true);
       
-      // Update user progress
-      const updatedUserData = updateCategoryProgress(userData, currentLevel, category, score, questions.length);
-      setUserData(updatedUserData);
+      try {
+        // Update user progress via API
+        const updatedUserData = await updateCategoryProgress(
+          userData, 
+          currentLevel, 
+          category, 
+          score, 
+          questions.length,
+          answers
+        );
+        setUserData(updatedUserData);
+      } catch (error) {
+        console.error('Failed to update progress:', error);
+        toast({
+          title: "Progress Save Failed",
+          description: "Your results couldn't be saved, but you can continue playing.",
+          variant: "destructive",
+        });
+      }
       
       navigate("/results", { 
         state: { 
@@ -118,7 +134,7 @@ const QuizPage = ({ currentLevel, userData, setUserData }) => {
           totalQuestions: questions.length, 
           category: category.charAt(0).toUpperCase() + category.slice(1),
           level: currentLevel,
-          levelName: levelInfo[currentLevel].name
+          levelName: levelInfo[currentLevel]?.name || `Level ${currentLevel}`
         } 
       });
     }
