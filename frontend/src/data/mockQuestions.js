@@ -215,39 +215,109 @@ export const mockQuestions = {
   ],
   fashion: [
     {
-      id: 11,
+      id: 31,
       question: "What hairstyle was popular in the 80s, especially among women?",
       options: ["Bob cut", "Big hair/Volume", "Pixie cut", "Straight hair"],
       correctAnswer: 1,
       difficulty: "easy"
     },
     {
-      id: 12,
+      id: 32,
       question: "Which brand popularized leg warmers in the 80s?",
       options: ["Nike", "Adidas", "No specific brand", "Reebok"],
       correctAnswer: 2,
       difficulty: "medium"
     },
     {
-      id: 13,
+      id: 33,
       question: "What type of jeans were trendy in the 80s?",
       options: ["Skinny jeans", "Acid-washed jeans", "Straight leg", "Bootcut"],
       correctAnswer: 1,
       difficulty: "easy"
     },
     {
-      id: 14,
+      id: 34,
       question: "Which accessory was commonly worn by both men and women?",
       options: ["Chokers", "Headbands", "Scrunchies", "All of the above"],
       correctAnswer: 3,
       difficulty: "medium"
     },
     {
-      id: 15,
+      id: 35,
       question: "What makeup trend was popular in the 80s?",
       options: ["Natural look", "Bold, colorful eyeshadow", "Minimal makeup", "Matte lipstick"],
       correctAnswer: 1,
       difficulty: "easy"
+    },
+    {
+      id: 36,
+      question: "What type of shoulder padding was fashionable in women's clothing?",
+      options: ["Small shoulder pads", "Huge shoulder pads", "No shoulder pads", "Rounded shoulder pads"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 37,
+      question: "Which footwear became a major trend in the 80s?",
+      options: ["High-top sneakers", "Ballet flats", "Combat boots", "Loafers"],
+      correctAnswer: 0,
+      difficulty: "easy"
+    },
+    {
+      id: 38,
+      question: "What was a popular men's hairstyle in the 80s?",
+      options: ["Buzz cut", "Mullet", "Crew cut", "Side part"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 39,
+      question: "Which pattern was extremely popular on clothing in the 80s?",
+      options: ["Polka dots", "Stripes", "Neon colors and geometric patterns", "Floral prints"],
+      correctAnswer: 2,
+      difficulty: "medium"
+    },
+    {
+      id: 40,
+      question: "What type of jewelry was trendy in the 80s?",
+      options: ["Delicate gold chains", "Chunky, statement jewelry", "Minimalist pieces", "Vintage brooches"],
+      correctAnswer: 1,
+      difficulty: "medium"
+    },
+    {
+      id: 41,
+      question: "Which brand of jeans was most popular in the 80s?",
+      options: ["Levi's", "Calvin Klein", "Gloria Vanderbilt", "All were popular"],
+      correctAnswer: 3,
+      difficulty: "hard"
+    },
+    {
+      id: 42,
+      question: "What type of jackets were trendy for both men and women?",
+      options: ["Leather jackets", "Denim jackets", "Bomber jackets", "All of the above"],
+      correctAnswer: 3,
+      difficulty: "medium"
+    },
+    {
+      id: 43,
+      question: "Which hair accessory was extremely popular among women?",
+      options: ["Hair clips", "Scrunchies", "Headbands", "Hair ribbons"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 44,
+      question: "What was the popular trend for exercise wear?",
+      options: ["All black outfits", "Neon-colored spandex and leotards", "Loose-fitting clothes", "Cotton t-shirts"],
+      correctAnswer: 1,
+      difficulty: "easy"
+    },
+    {
+      id: 45,
+      question: "Which sunglasses style was iconic in the 80s?",
+      options: ["Aviators", "Cat-eye", "Oversized frames", "Round glasses"],
+      correctAnswer: 2,
+      difficulty: "medium"
     }
   ],
   general: [
