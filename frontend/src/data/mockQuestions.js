@@ -1,4 +1,5 @@
 export const mockQuestions = {
+  level1: {
   music: [
     {
       id: 1,
