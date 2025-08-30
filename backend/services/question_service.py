@@ -51,6 +51,10 @@ class QuestionService:
         # Insert new questions
         question_docs = []
         for q_data in questions:
+            # Ensure metadata is set properly
+            if q_data.metadata is None:
+                q_data.metadata = QuestionMetadata()
+            
             question = Question(**q_data.dict())
             question_docs.append(question.dict())
         
